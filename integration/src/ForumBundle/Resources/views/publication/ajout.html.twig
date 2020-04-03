@@ -1,0 +1,23 @@
+{% extends 'test.html.twig' %}
+
+
+                                    {% block titrepage %}
+                                        <h1>Ajout Publication</h1>
+                                    {% endblock %}
+ {% block content %}
+
+          {{ form_start(f) }}
+
+          <div class="form-group">{{ form_row(f.titre,{'attr':{'class':'form-control'}}) }}
+
+          </div>
+          <div class="form-group">{{ form_row(f.contenu,{'attr':{'class':'form-control'}}) }}</div>
+          <div class="form-group">{{ form_row(f.theme,{'attr':{'class':'form-control'}}) }}</div>
+          <div class="form-group">{{ form_row(f.file) }}</div>
+          <div class="form-group">{{ form_row(f.save,{'attr':{'class':'btn btn-primary'}}) }}</div>
+
+          {{ form_end(f) }}
+
+
+
+ {% endblock %}

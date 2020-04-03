@@ -1,0 +1,29 @@
+
+<html>
+<head>
+
+</head>
+<body>
+<h1>Liste des club</h1>
+<table border="2">
+    <tr><th>ID</th><th>titre</th><th>theme</th><th>contenu</th><th>posted_in</th></tr>
+    {%  for pb in m %}
+        <tr>
+            <td>{{ pb.idPb }}</td>
+            <td>{{ pb.titre }}</td>
+            <td>{{ pb.theme }}</td>
+
+            <td>{{ pb.contenu }}</td>
+            <td>{{ pb.postedIn|date}}</td>
+
+
+            <td> <a href="{{path('publication_delete',{ 'id':pb.idPb} )}}">Supprimer</a> </td>
+
+            <td> <a href="{{path('publication_update',{ 'id':pb.idPb} )}}">update</a> </td>
+
+
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

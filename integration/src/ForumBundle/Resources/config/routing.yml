@@ -1,0 +1,38 @@
+forum_homepage:
+    path:     /
+    defaults: { _controller: ForumBundle:Default:index }
+forum_read:
+    path:     /read
+    defaults: { _controller: ForumBundle:Publication:read }
+
+publication_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ForumBundle:Publication:delete }
+publication_ajout:
+    path:     /ajout
+    defaults: { _controller: ForumBundle:Publication:ajouter }
+publication_update:
+    path:     /update/{id}
+    defaults: { _controller: ForumBundle:Publication:update }
+
+publication_search:
+    path:     /search/
+    defaults: { _controller: ForumBundle:Publication:search }
+publication_show:
+    path:     /show/{id}
+    defaults: { _controller: ForumBundle:Publication:show }
+forum_ajouter_comment:
+    path: /ajouter_comment/
+    defaults: { _controller: ForumBundle:Publication:ajouter_commentaire }
+    methods:   POST
+
+add_like:
+    path:     /add_like/{id}
+    defaults: { _controller: ForumBundle:Publication:add_like }
+
+add_dislike:
+    path:     /add_dislike/{id}
+    defaults: { _controller: ForumBundle:Publication:add_dislike }
+
+
+

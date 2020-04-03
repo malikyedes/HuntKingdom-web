@@ -1,0 +1,64 @@
+{% extends 'test.html.twig' %}
+
+                                    {% block titrepage %}
+                                        <h1>Forum</h1>
+                                    {% endblock %}
+
+
+ {% block content %}
+
+
+    {%  for pb in m %}
+         <div class="container">
+
+             <div class="col-xs-12 col-sm-8 col-md-9">
+                 <article class="blog-post-wrapper sticky">
+                     <header class="entry-header">
+                         <div class="entry-meta">
+                             <ul class="list-inline">
+                                 <li><span class="the-time"><a href="#">{{ pb.postedIn|date}}</a></span></li>
+                                 <li><span class="the-author"> By: <a class="url" href="#">Admin</a></span></li>
+                                 <li><span class="the-category"> In: <a href="#">{{ pb.theme }}</a></span></li>
+                                 <li><span class="the-comments" > <a href="#">14 Comments</a></span></li>
+                             </ul>
+                         </div><!-- /.entry-meta -->
+
+                         <h2 class="entry-title"><a>{{ pb.titre }}</a></h2>
+                     </header><!-- /.entry-header -->
+                     <div class="entry-content">
+                         <p>{{ pb.contenu }}</p>
+                     </div><!-- /.entry-content -->
+                     <div class="post-thumbnail">
+                         <img src="img/blog/blog-1.jpg" class="img-responsive " alt="">
+                     </div><!-- /.post-thumbnail -->
+                     <footer class="entry-footer">
+                         <a href={{ path('publication_show',
+                             {
+                                 'id':pb.idPb
+                             }) }} class="btn btn-primary"> Read More</a>
+                     </footer><!-- /.entry-footer -->
+                 </article>
+             </div>
+         </div>
+
+
+
+     {% endfor %}
+
+
+ {% endblock %}
+
+    {% block search %}
+
+        {{ form_start(f) }}
+<div class="search-form">{{ form_row(f.titre,{'attr':{'class':'form-control'}}) }}
+    <button type="submit" class="search-submit" value=""><i class="fa fa-search"></i>{{ form_row(f.recherche,{'attr':{'class':'btn btn-primary'}}) }}</button>
+
+
+
+        {{ form_end(f) }}
+
+
+    {% endblock %}
+
+

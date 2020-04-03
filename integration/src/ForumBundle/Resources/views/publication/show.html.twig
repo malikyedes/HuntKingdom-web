@@ -1,0 +1,192 @@
+{% extends 'test.html.twig' %}
+
+   {% block titrepage %}
+       <h1 xmlns="http://www.w3.org/1999/html">Forum</h1>
+   {% endblock %}
+
+
+ {% block content %}
+
+
+
+<div class="container">
+
+    <div class="col-xs-12 col-sm-8 col-md-9">
+        <article class="blog-post-wrapper sticky">
+            <header class="entry-header">
+                <div class="entry-meta">
+                    <ul class="list-inline">
+                        <li><span class="the-time"><a href="#">{{ m.postedIn|date}}</a></span></li>
+                        <li><span class="the-author"> By: <a class="url" href="#">Admin</a></span></li>
+                        <li><span class="the-category"> Théme: <a href="#">{{ m.theme }}</a></span></li>
+                    </ul>
+                </div><!-- /.entry-meta -->
+
+                <h2 class="entry-title"><a>{{ m.titre }}</a></h2>
+            </header><!-- /.entry-header -->
+            <div class="entry-content">
+                <p>{{ m.contenu }}</p>
+            </div><!-- /.entry-content -->
+            <div class="post-thumbnail">
+                <img src= "{{ asset('images/') }}{{ m.image }}" class="img-responsive " alt="">
+
+                <script>
+
+
+
+
+
+
+
+                    function myFunction(x){
+                        console.log("the ajax function is ok");
+
+
+                        $.ajax({
+                            url:'{{ ( path('add_like',{'id':m.idPb})) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+
+                            },
+                            async: true,
+                            success: function (data)
+                            {
+                                console.log(data)
+                                //$('div#ajax-results').html(data.output);
+                                // document.getElementById("animation").className = "animated fadeIn";
+                                document.getElementById("yourElement").className = "hidden-xl-down";
+                                document.getElementById("tow").className = "hidden-xl-down";
+                                document.getElementById("yourElement2").className = "fas fa-thumbs-up";
+                                document.getElementById('raedclap').innerHTML = data.output;
+                                document.getElementById("one").className = "hidden-xl-down";
+
+
+
+
+                            }
+                        });
+                        return false;
+
+
+                    }
+
+                    function myFunction2(x){
+                        console.log("the ajax dislaik function is ok");
+
+
+                        $.ajax({
+                            url:'{{ ( path('add_dislike',{'id':m.idPb})) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+
+                            },
+                            async: true,
+                            success: function (data)
+                            {
+                                console.log(data)
+                                //$('div#ajax-results').html(data.output);
+                                // document.getElementById("animation").className = "animated fadeIn";
+                                document.getElementById("yourElement").className = "far fa-thumbs-up";
+                                document.getElementById("yourElement2").className = "hidden-xl-down";
+                                document.getElementById('raedclap').innerHTML = data.output;
+                                document.getElementById("one").className = "hidden-xl-down";
+                                document.getElementById("tow").className = "hidden-xl-down";
+
+
+
+                            }
+                        });
+                        return false;
+
+
+                    }
+
+                </script>
+
+
+            </div><!-- /.post-thumbnail -->
+
+
+        </article>
+
+        <div class="about-author clearfix">
+            <div class="media">
+                    <div class="row">
+                        <p><a class="btn btn-danger"  href="{{path('publication_delete',{ 'id':m.idPb} )}}">Supprimer</a></p>
+                            <p><a class="btn btn-primary" href="{{path('publication_update',{ 'id':m.idPb} )}}">update </a></p>
+                    </div>
+
+                <div class="media-body">
+                    <div class="author-info media-heading">
+                            <div class="media">
+                                <section/>
+
+                                    <div class="animatedfadeInt" id="yourElementt2" >
+                                        <i class="fas fa-eye" style="font-size:30px; color:#8A2BE2;"></i>
+                                        <span class="js-likes" style="color:#8A2BE2;">{{ (views[1])|join(', ') }}</span> </div>
+                                </section>
+
+                            </div>
+                        <div class="media">
+                            <a  class="ajaxf">
+                                <i onclick="myFunction2(this)"   id="one" style="font-size:30px;color:#8A2BE2;"></i>
+
+                                <i onclick="myFunction(this)" class="fas fa-thumbs-up" id="tow" style="font-size:30px;color:#8A2BE2;"></i>
+
+                                <i onclick="myFunction2(this)" class="hidden-xl-down" id="yourElement2" style="font-size:30px;color:#8A2BE2;"></i>
+                                <i onclick="myFunction(this)" class="hidden-xl-down" id="yourElement" style="font-size:30px;color:#8A2BE2;"></i>
+                                <span class="js-label" style="color:#8A2BE2;" id="raedclass"> </span>
+                                <div class="container-fluid" id="animation">
+                                    <span class="js-likes" style="color:#8A2BE2;" id="raedclap">    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="comments-wrapper">
+
+                <h2>Comments</h2>
+                <hr>
+                {% for j in msg %}
+
+                    <ul class="media-list">
+
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" alt="Image" src="img/avatar-2.jpg">
+                            </a>
+                        </div><!-- /.media-left -->
+                        <div class="media-body">
+                            <span class="comment-author"><i class="fa fa-user"></i>Jayden Willis</span>
+                            <span class="comment-date"><i class="fa fa-calendar"></i>{{ j.addedIn|date}}</span>
+                            <div class="comment-body">{{ j.contenu }}</div>
+                            <span class="comments-buttons"><a href="#">Reply</a></span>
+                        </div><!-- /.media-body -->
+                    </li>
+                </ul>
+                {% endfor %}
+
+                <h2>Add Comment</h2>
+                <hr>
+
+                <div class="form-group">
+                    <form method="post" action="{{path('forum_ajouter_comment') }}">
+
+                        <input type="hidden" hidden class="form-control" name="id" id="comm "  value=" {{ m.idPb }}">
+                        <input type="textarea" class="form-control" name="comm" id="comm">
+                        <input type="submit" name="submit" class="btn btn-primary">
+                    </form>
+                </div>
+
+            </section>
+    </div>
+</div>
+
+ {% endblock %}
+
