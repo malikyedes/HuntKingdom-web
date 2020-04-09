@@ -8,13 +8,14 @@
  {% block content %}
 
 
-
-
-
-
+     <div class="count">
+         <h4> Nombre total des publications : {{ m.getTotalItemCount }}  </h4>
+         <br>
+     </div>
 
 
      {%  for pb in m %}
+
 <div class="container">
 
                 <div class="col-xs-12 col-sm-8 col-md-9">
@@ -37,10 +38,10 @@
                             <img src="img/blog/blog-1.jpg" class="img-responsive " alt="">
                         </div><!-- /.post-thumbnail -->
                         <footer class="entry-footer">
-                            <a href={{ path('publication_show',
+                            <a class="btn btn-primary" href={{ path('publication_show',
      {
       'id':pb.idPb
-     }) }} class="btn btn-primary"> Read More</a>
+     }) }} > Read More</a>
                         </footer><!-- /.entry-footer -->
                     </article>
                 </div>
@@ -50,14 +51,67 @@
 
     {% endfor %}
 
-
+     <div class="pagination-wrap text-center">
+         {{ knp_pagination_render(m) }}
+     </div>
  {% endblock %}
 
 {% block search %}
-<form role="search" method="get" class="search-form" action="getPost">
-    <label class="sr-only">Search for:</label>
-    <input type="search" class="form-control" placeholder="Search" value="" name="s" title="Search for:">
-    <button type="submit" class="search-submit" value=""><i class="fa fa-search"></i></button>
-</form>
+
+    <div class="sidebar-search">
+        <div class="input-group custom-search-form">
+            <input type="text" id="search" class="form-control" placeholder="Search here">
+        </div>
+    </div>
+    <ul class="nav" id="side-menu">
+        <li>
+            <a href="search"> Entities<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level" id="entitiesNav">
+            </ul>
+        </li>
+    </ul>
+    <br><br><br><br>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script >
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'publication') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="show/'+id+'"></a></li>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}
 

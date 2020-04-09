@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new HuntkingdomBundle\HuntkingdomBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new ForumBundle\ForumBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test.html.twig'], true)) {
@@ -61,4 +63,5 @@ class AppKernel extends Kernel
         });
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
 }

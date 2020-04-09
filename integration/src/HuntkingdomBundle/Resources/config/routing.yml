@@ -7,3 +7,4 @@ huntkingdom_loginpage:
 huntkingdom_signuppage:
     path:     /up
     defaults: { _controller: HuntkingdomBundle:Hunt:signup }
+
