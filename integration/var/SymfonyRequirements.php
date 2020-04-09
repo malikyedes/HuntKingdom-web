@@ -69,7 +69,7 @@ class Requirement
     /**
      * Returns the message for testing the requirement.
      *
-     * @return string The test.html.twig message
+     * @return string The test message
      */
     public function getTestMessage()
     {

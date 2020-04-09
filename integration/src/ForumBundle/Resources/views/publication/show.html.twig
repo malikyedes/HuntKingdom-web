@@ -29,6 +29,54 @@
             </div><!-- /.entry-content -->
             <div class="post-thumbnail">
                 <img src= "{{ asset('images/') }}{{ m.image }}" class="img-responsive " alt="">
+                <br>
+                <div class="container">
+                    {% if m.idUsers==userid %}
+
+                        <div class="row">
+                            <a class="fas fa-trash" style="font-size:30px; color:#FF0000;"  href="{{path('publication_delete',{ 'id':m.idPb} )}}"></a>
+                            &nbsp;                             &nbsp;
+                            &nbsp;
+                            &nbsp;                            &nbsp;
+
+
+                            <a class="fas fa-edit" style="font-size:30px;" href="{{path('publication_update',{ 'id':m.idPb} )}}">update </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <br> <br>
+                <div class="row">
+                <a class="fas fa-warning" style="font-size:30px;" data-toggle="modal" data-target="#exampleModal">
+
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Signale Publication</h5>
+
+                            </div>
+
+
+
+                            <form method="post">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">couse</label>
+                                    <textarea class="form-control rounded-0" name="cause" rows="10"></textarea>
+                                </div>
+                                <input type="submit" name="submit" class="btn btn-primary">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+
 
                 <script>
 
@@ -104,19 +152,11 @@
                     }
 
                 </script>
-
-
             </div><!-- /.post-thumbnail -->
 
 
         </article>
 
-        <div class="about-author clearfix">
-            <div class="media">
-                    <div class="row">
-                        <p><a class="btn btn-danger"  href="{{path('publication_delete',{ 'id':m.idPb} )}}">Supprimer</a></p>
-                            <p><a class="btn btn-primary" href="{{path('publication_update',{ 'id':m.idPb} )}}">update </a></p>
-                    </div>
 
                 <div class="media-body">
                     <div class="author-info media-heading">
@@ -129,9 +169,14 @@
                                 </section>
 
                             </div>
+                        <br>
                         <div class="media">
                             <a  class="ajaxf">
-                                <i onclick="myFunction2(this)"   id="one" style="font-size:30px;color:#8A2BE2;"></i>
+
+                                <i onclick="myFunction2(this)" class="fas fa-thumbs-down"  id="one" style="font-size:30px;color:#8A2BE2;"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
 
                                 <i onclick="myFunction(this)" class="fas fa-thumbs-up" id="tow" style="font-size:30px;color:#8A2BE2;"></i>
 
@@ -159,7 +204,7 @@
                     <li class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" alt="Image" src="img/avatar-2.jpg">
+                                <img class="media-object" alt="Image" src= "{{ asset('img/man-300x300.png') }}">
                             </a>
                         </div><!-- /.media-left -->
                         <div class="media-body">

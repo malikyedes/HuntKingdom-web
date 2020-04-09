@@ -14,7 +14,7 @@ class LikeForumRepository extends \Doctrine\ORM\EntityRepository{
 
     public  function countLikeUser($idpb,$idUser)
     {
-        $query=$this->getEntityManager()->createQuery("select COUNT(m.idlike) from ForumBundle:LikeForum m where m.idPb =?1 and m.ID_USERS =?2 ");
+        $query=$this->getEntityManager()->createQuery("select COUNT(m.idLike) from ForumBundle:LikeForum m where m.idPb =?1 and m.idUsers =?2 ");
 
         $query->setParameter(1,$idpb);
         $query->setParameter(2,$idUser);
@@ -29,6 +29,13 @@ class LikeForumRepository extends \Doctrine\ORM\EntityRepository{
 
 
 
+    public function statlike()
+    {
+        return $this->getEntityManager()->createQuery('
+        select c.idPb as id,count(c.idLike) as n from ForumBundle:LikeForum c group by c.idPb order by n desc
+        ')->setMaxResults(7)->getResult();
+
+    }
 
 
 

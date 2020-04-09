@@ -15,35 +15,40 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PublicationController extends Controller {
-    public function readAction()
+    public function readAction(Request $request)
     {
-        $em=$this->getDoctrine()->getManager();
-        $Publication=$em->getRepository("ForumBundle:Publication")->findAll();
-
-        return $this->render('@Forum/publication/readtest.html.twig',array('m'=>$Publication));
+        $em = $this->getDoctrine()->getManager();
+        $Publication = $em->getRepository("ForumBundle:Publication")->findAll();
+        /**
+         * @var $pagination \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate($Publication,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 2));
+        return $this->render('@Forum/publication/readtest.html.twig', array('m' => $result));
     }
 
     public function searchAction(Request $request)
     {
-        $m=new Publication();
-        $Form=$this->createForm(\ForumBundle\Form\RechercheType::class,$m);
-        $Form->handleRequest($request);
-
-        if($Form->isSubmitted())
-        {
-            $m=$this->getDoctrine()->getRepository(Publication::class)
-                ->findBy(array('titre'=>$m->getTitre()));;
-
-
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $publication =  $em->getRepository('ForumBundle:Publication')->findEntitiesByString($requestString);
+        if(!$publication) {
+            $result['publication']['error'] = "Post Not found  ";
+        } else {
+            $result['publication'] = $this->getRealEntities($publication);
         }
-        else{
-            $m=$this->getDoctrine()->getRepository(Publication::class)
-                ->findAll();
-        }
-        return $this->render("@Forum/publication/recherche.html.twig",array('f'=>$Form->createView(),'m'=>$m));
-
-
+        return new Response(json_encode($result));
     }
+    public function getRealEntities($publication){
+        foreach ($publication as $publication){
+            $realEntities[$publication->getIdPb()] = [$publication->getTitre(),$publication->getcontenu(),$publication->getTheme()];
+        }
+        return $realEntities;
+    }
+
+
 
     public function showAction($id,Request $request)
     {
@@ -57,6 +62,8 @@ class PublicationController extends Controller {
 
         $em=$this->getDoctrine()->getManager();
         $Pub=$em->getRepository("ForumBundle:Publication")->find($id);
+        $likes_user=$em->getRepository("ForumBundle:LikeForum")->countLikeUser($id,$userid);
+
 
         $em1=$this->getDoctrine()->getManager();
         $commentairep=$em1->getRepository("ForumBundle:Commentaire")->findCommentSQD_Forum($id);
@@ -66,7 +73,7 @@ class PublicationController extends Controller {
         { $this->add_viewAction($id);}
 
 
-        return $this->render('@Forum/publication/show.html.twig',array('m'=>$Pub,'msg'=>$commentairep,'views'=>$Views));
+        return $this->render('@Forum/publication/show.html.twig',array('m'=>$Pub,'msg'=>$commentairep,'views'=>$Views,'userid'=>$userid,'likes_user' => $likes_user));
 
 
 
@@ -79,14 +86,13 @@ class PublicationController extends Controller {
     {
         $Publication=new Publication();
         $time = new \DateTime();
-
-        /* if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
-         {
-             $user = $this->container->get('security.token_storage')->getToken()->getUser();
-             $userid = $user->getId();
-         }*/
+        if ($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $userid = $user->getId();
+        }
 
         // $Publication->setIdUser($userid);
+        $Publication->setIdUsers($userid);
         $Publication->setPostedIn($time);
 
         $Form=$this->createForm(PublicationType::class,$Publication);
@@ -249,10 +255,59 @@ class PublicationController extends Controller {
 
 
 
+    public function sendNotification(Request $request)
+    {
+
+        $manager = $this->get('mgilet.notification');
+        $notif = $manager->createNotification('nouvelle publication');
+        $notif->setMessage('This a notification.');
+
+        $manager->addNotification(array($this->getUser()), $notif, true);
+
+    }
 
 
 
+    public function afficher_aimeAction()
+    {
 
+        $em=$this->getDoctrine()->getManager();
+        $pub=$em->getRepository("ForumBundle:Publication")->findAll();
+
+        $em=$this->getDoctrine()->getManager();
+        $Articles=$em->getRepository("ForumBundle:LikeForum")->statlike();
+        //var_dump($Articles[1]);
+        //$em1=$this->getDoctrine()->getManager();
+        // $Signale=$em1->getRepository("ArticleBundle:Signals")->findOneBy(array('idArticle' => $Articles[1]));
+
+        return $this->render('@Forum/publication/afficher_aime.html.twig',array('m'=>$Articles,'m2'=>$pub));
+
+
+    }
+
+    public function afficher_mineAction(Request $request )
+    {
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $userid = $user->getId();
+        }
+        $m=new Publication();
+
+
+        //$ArticlesU=new Article();
+        $em=$this->getDoctrine()->getManager();
+        $Articles=$em->getRepository("ForumBundle:Publication")->findBy(array('idUsers' => $userid));
+        /**
+         * @var $pagination \Knp\Component\Pager\Paginator
+         */
+        $paginator=$this->get('knp_paginator');
+        $result=$paginator->paginate($Articles,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',2));
+
+        return $this->render('@Forum/publication/readtest.html.twig',array('m'=>$result));
+    }
 
 
 

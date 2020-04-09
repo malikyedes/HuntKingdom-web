@@ -5,6 +5,16 @@ namespace ForumBundle\Repository;
 
 class PublicationRepository extends \Doctrine\ORM\EntityRepository{
 
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM ForumBundle:Publication p
+                WHERE p.contenu LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
     public function findTitreSQD_NAME($titre,$pd)
     {
         $query=$this->getEntityManager()->createQuery("select m from ForumBundle:Publication m where m.titre =?1 ");

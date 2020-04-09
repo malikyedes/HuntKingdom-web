@@ -15,8 +15,8 @@ publication_update:
     path:     /update/{id}
     defaults: { _controller: ForumBundle:Publication:update }
 
-publication_search:
-    path:     /search/
+search:
+    path:     /search
     defaults: { _controller: ForumBundle:Publication:search }
 publication_show:
     path:     /show/{id}
@@ -34,5 +34,11 @@ add_dislike:
     path:     /add_dislike/{id}
     defaults: { _controller: ForumBundle:Publication:add_dislike }
 
+article_afficheraime:
+    path:     /afficheraime
+    defaults: { _controller: ForumBundle:Publication:afficher_aime }
 
 
+article_afficher_Mes_ARTICLE:
+    path:     /afficherMes_ARTICLE
+    defaults: { _controller: ForumBundle:Publication:afficher_mine }
