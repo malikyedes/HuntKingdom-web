@@ -49,14 +49,12 @@
                     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                         <div class="container">
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" >
+                                <button type="button"  >
                                     <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
+
                                 </button>
                                 <!-- offcanvas-trigger-effects -->
-                                <h1 class="logo"><a class="navbar-brand" href="{{ path('huntkingdom_indexpage') }}"><img src="img/logoHK1.png" alt=""></a></h1>
+                                <h1 class="logo"><a class="navbar-brand" href="index.html"><img src="img/logo.png" alt=""></a></h1>
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,7 +62,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active"><a href="index.html">Home</a></li>
 
-                                    <li class="dropdown"><a href="#" >Shop <b class="caret"></b></a>
+                                    <li class="dropdown"><a href="#" >About <b class="caret"></b></a>
                                         <!-- submenu-wrapper -->
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
@@ -81,17 +79,14 @@
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="{{ path('forum_read') }}">Afficher Publications</a></li>
-                                                    <li><a href="{{ path('article_afficheraime') }}">Publication Plus aimé </a></li>
-                                                    <li><a href="{{ path('publication_ajout') }}">Ajout Publication</a></li>
-                                                    <li><a href="{{ path('article_afficher_Mes_ARTICLE') }}">Afficher Mes Publications</a></li>
-
+                                                    <li><a href="blog.html">Blog Standard</a></li>
+                                                    <li><a href="blog-single.html">Blog Single</a></li>
                                                 </ul>
                                             </div><!-- /.submenu-inner -->
                                         </div> <!-- /.submenu-wrapper -->
                                     </li>
 
-                                    <li class="dropdown"><a href="#" >Events <b class="caret"></b></a>
+                                    <li class="dropdown"><a href="#" >Portfolio <b class="caret"></b></a>
                                         <!-- submenu-wrapper -->
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
@@ -105,7 +100,7 @@
                                     </li>
 
 
-                                    <li class="dropdown"><a href="#" >Articles <b class="caret"></b></a>
+                                    <li class="dropdown"><a href="#" >Pages <b class="caret"></b></a>
                                         <!-- submenu-wrapper -->
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
@@ -118,10 +113,8 @@
                                             </div><!-- /.submenu-inner -->
                                         </div> <!-- /.submenu-wrapper -->
                                     </li>
-                                    <li><a href="contact.html">Réclamations</a></li>
-                                    <li><a href="{{ path('fos_user_security_login') }}">Sign in</a></li>
-                                    <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
-
+                                    <li><a href="/reclam/new">Reclamation</a></li>
+                                    <li><a href="login">Sign in</a></li>
                                 </ul>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container -->

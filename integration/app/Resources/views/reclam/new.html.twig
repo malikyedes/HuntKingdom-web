@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Huntkingdom</title>
+    <!-- Web Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+    <!-- Flaticon CSS -->
+    <link href="{{ asset('fonts/flaticon/flaticon.css') }}" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="{{ asset('owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('owl-carousel/owl.theme.css') }}" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="{{ asset('css/hippo-off-canvas.css') }}" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <!-- REVOLUTION BANNER CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('rs-plugin/css/settings.css') }}" media="screen" />
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet') }}">
+
+    <script src="{{ asset('js/vendor/modernizr-2.8.1.min.js') }}"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js/vendor/html5shim.js') }}"></script>
+    <script src="{{ asset('js/vendor/respond.min.js') }}"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+
+<div id="st-container" class="st-container">
+    <div class="st-pusher">
+        <div class="st-content">
+            <div class="st-content-inner">
+                <header>
+                    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" >
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <!-- offcanvas-trigger-effects -->
+                                <h1 class="logo"><a class="navbar-brand" href="index"><img src="img/logo.png" alt=""></a></h1>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="">Home</a></li>
+
+                                    <li ><a href="#" >About</a>
+                                        <!-- submenu-wrapper -->
+                                        <div class="submenu-wrapper submenu-wrapper-topbottom">
+                                            <div class="submenu-inner  submenu-inner-topbottom">
+
+                                            </div><!-- /.submenu-inner -->
+                                        </div> <!-- /.submenu-wrapper -->
+                                    </li>
+
+                                    <li ><a href="#" >Blog</a>
+                                        <!-- submenu-wrapper -->
+                                        <div class="submenu-wrapper submenu-wrapper-topbottom">
+                                            <div class="submenu-inner  submenu-inner-topbottom">
+
+                                            </div><!-- /.submenu-inner -->
+                                        </div> <!-- /.submenu-wrapper -->
+                                    </li>
+                                    <li><a href="#" >Portfolio</a>
+                                        <!-- submenu-wrapper -->
+                                        <div class="submenu-wrapper submenu-wrapper-topbottom">
+                                            <div class="submenu-inner  submenu-inner-topbottom">
+
+                                            </div><!-- /.submenu-inner -->
+                                        </div> <!-- /.submenu-wrapper -->
+                                    </li>
+                                    <li><a href="#" >Pages</a>
+                                        <!-- submenu-wrapper -->
+                                        <div class="submenu-wrapper submenu-wrapper-topbottom">
+                                            <div class="submenu-inner  submenu-inner-topbottom">
+
+                                            </div><!-- /.submenu-inner -->
+                                        </div> <!-- /.submenu-wrapper -->
+                                    </li>
+
+                                    <li class="active"><a href="">Reclamation</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+
+                <section class="page-header-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h1>Reclamation</h1>
+                                </div>
+                                <ol class="breadcrumb">
+                                    <li><a href="#">Home</a></li>
+                                    <li class="active">Reclamation</li>
+                                </ol>
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </section>
+
+
+                <div class="container">
+                    <div class="content-wrapper">
+                        <div class="contact-us-wrapper">
+                            <div class="contact-us-form">
+
+
+                                <h1>Passer une reclamation</h1>
+
+
+
+                                {{ form_start(form) }}
+
+                                {{ form_widget(form) }}
+                                <input type="submit" value="Reclamer" class="btn btn-primary btn-lg" />
+
+                                {{ form_end(form) }}
+
+
+
+                            </div>
+
+                        </div><!-- /.content-wrapper -->
+                    </div><!-- /.content-wrapper -->
+                </div><!-- /.container -->
+
+
+
+
+
+                <footer class="footer-wrapper">
+
+                                <div class="copyright">
+                                    <p>Copyright &copy; 2015 primex . All Rights Reserved. Designed by <a href="http://www.uicookies.com">uicookies.com</a> </p>
+                                </div><!-- /.copyright -->
+
+                </footer>
+            </div> <!-- .st-content-inner -->
+        </div> <!-- .st-content -->
+    </div> <!-- .st-pusher -->
+
+
+    <!-- ======== OFFCANVAS MENU ========= -->
+
+</div><!-- /st-container -->
+
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">
+        <div class="status-mes"></div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- wow.min.js -->
+<script src="{{ asset('js/wow.min.js') }}"></script>
+<!-- jQuery REVOLUTION Slider  -->
+<script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<!-- owl-carousel -->
+<script src="{{ asset('owl-carousel/owl.carousel.min.js') }}"></script>
+<!-- smoothscroll -->
+<script src="{{ asset('js/smoothscroll.js') }}"></script>
+<!-- Offcanvas Menu -->
+<script src="{{ asset('js/hippo-offcanvas.js') }}"></script>
+<!-- easypiechart -->
+<script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
+<!-- Scrolling Nav JavaScript -->
+<script src="{{ asset('js/jquery.easing.min.js') }}"></script>
+<!-- Magnific-popup -->
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<!-- Shuffle.min js -->
+<script src="{{ asset('js/jquery.shuffle.min.js') }}"></script>
+<!-- Custom Script -->
+<script src="{{ asset('js/scripts.js') }}"></script>
+
+</body>
+</html>

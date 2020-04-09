@@ -1,10 +1,9 @@
 huntkingdom_indexpage:
     path:     /index
-    defaults: { _controller: HuntkingdomBundle:Hunt:home }
+    defaults: { _controller: HuntkingdomBundle:Hunt:index }
 huntkingdom_loginpage:
     path:     /in
     defaults: { _controller: HuntkingdomBundle:Hunt:login }
 huntkingdom_signuppage:
     path:     /up
     defaults: { _controller: HuntkingdomBundle:Hunt:signup }
-

@@ -10,7 +10,7 @@ class HuntController extends Controller
     {
         return $this->render('@Huntkingdom/Default/login.html.twig');
     }
-    public function homeAction()
+    public function indexAction()
     {
         return $this->render('@Huntkingdom/Default/index.html.twig');
     }
