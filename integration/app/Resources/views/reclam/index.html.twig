@@ -1,0 +1,67 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <link href="{{ asset('bootstrap.css') }}" rel="stylesheet">
+    <h1>Reclams list</h1>
+
+    <input id="myInput" type="text" placeholder="Search..">
+        <table class="table table-hover" >
+            <thead>
+            <tr class="table-light">
+                <th scope="row">Identidiant</th>
+                <th scope="row">Télphone</th>
+                <th scope="row">Description</th>
+                <th scope="row">Sujet</th>
+                <th scope="row">Nom</th>
+                <th scope="row">Prenom</th>
+                <th scope="row">Email</th>
+                <th scope="row">Screenshot</th>
+                <th scope="row">Date</th>
+                <th scope="row">Actions</th>
+            </tr>
+
+        </thead>
+
+            <tbody id="myTable">
+        <tr class="table-active">
+
+        {% for reclam in reclams %}
+
+
+                <td><a href="{{ path('reclam_show', { 'id': reclam.id }) }}">{{ reclam.id }}</a></td>
+                <td scope="row">{{ reclam.tel }}</td>
+                <td scope="row">{{ reclam.description }}</td>
+                <td scope="row">{{ reclam.sujet }}</td>
+                <td scope="row">{{ reclam.nom }}</td>
+                <td scope="row">{{ reclam.prenom }}</td>
+                <td scope="row">{{ reclam.email }}</td>
+                <td scope="row">{{ reclam.screenshot }}</td>
+                <td scope="row">{{ reclam.date }}</td>
+                <td>
+
+
+                            <a href="{{ path('reclam_show', { 'id': reclam.id }) }}"><button type="button" class="btn btn-info">Afficher</button></a>
+
+                            <a href="{{ path('reclam_delete', { 'id': reclam.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br><br><br><br><br><br><br><br><br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

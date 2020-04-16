@@ -96,9 +96,8 @@
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="portfolio-four.html">Portfolio Four Col</a></li>
-                                                    <li><a href="portfolio-three.html">Portfolio Three Col</a></li>
-                                                    <li><a href="portfolio-two.html">Portfolio Two Col</a></li>
+                                                    <li><a href="{{ path('huntkingdom_AfficheEvenements') }}">Afficher Evenements</a></li>
+                                                    <li><a href="{{ path('huntkingdom_AjoutEvenements') }}">Ajout Evenements</a></li>
                                                 </ul>
                                             </div><!-- /.submenu-inner -->
                                         </div> <!-- /.submenu-wrapper -->
@@ -118,7 +117,7 @@
                                             </div><!-- /.submenu-inner -->
                                         </div> <!-- /.submenu-wrapper -->
                                     </li>
-                                    <li><a href="contact.html">Réclamations</a></li>
+                                    <li><a href="{{ path('reclam_new') }}">Réclamations</a></li>
                                     <li><a href="{{ path('fos_user_security_login') }}">Sign in</a></li>
                                     <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
 
@@ -144,15 +143,13 @@
 
                             <div class="container">
                                 <div class="carousel-caption">
-                                    <small class="animated fadeIn">CALL US TODAY</small>
+                                    <small class="animated fadeIn">APPELEZ-NOUS</small>
                                     <div class="phone animated lightSpeedIn">1-800-1234-567</div>
-                                    <h1 class="animated lightSpeedIn">Title of Your Product <br>Service or Event</h1>
+                                    <h1 class="animated lightSpeedIn">HuntKingdom <br>Chasser autrement</h1>
 
-                                    <p class="lead animated lightSpeedIn">It's a tag line, where you can write a key point of your idea.
-                                        It is a long
-                                        established fact that a reader will be distracted.</p>
+                                    <p class="lead animated lightSpeedIn">visitez nos événements.</p>
 
-                                    <a class="btn btn-primary animated lightSpeedIn" href="#">Work With Us Today</a>
+                                    <a class="btn btn-primary animated lightSpeedIn" href="{{ path('huntkingdom_AfficheEvenements') }}">Evénement</a>
                                 </div>
                                 <!--.carousel-caption-->
                             </div>
@@ -167,12 +164,10 @@
                             <div class="container">
                                 <div class="carousel-caption">
 
-                                    <h1 class="animated bounceIn">Title of Your Product <br>Service or Event</h1>
+                                    <h1 class="animated bounceIn">HuntKingdom <br>Chasser autrement</h1>
 
-                                    <p class="lead animated bounceIn">It's a tag line, where you can write a key point of your idea. It
-                                        is a long
-                                        established fact that a reader will be distracted.</p>
-                                    <a class="btn btn-primary animated bounceIn" href="#">Work With Us Today</a>
+                                    <p class="lead animated bounceIn">visitez nos blog.</p>
+                                    <a class="btn btn-primary animated bounceIn" href="{{ path('forum_read') }}">BLOG</a>
                                 </div>
                                 <!--.carousel-caption-->
                             </div>
@@ -196,21 +191,22 @@
                 <!-- #x-corp-carousel-->
 
 
+                <
                 <div class="container">
                     <div class="content-wrapper">
                         <section class="intro-wrapper">
                             <div class="row">
                                 <div class="col-lg-6 col-md-8">
                                     <h2 class="wow fadeInDown">Welcome to HuntKingdom</h2>
-                                    <p>Objectively enable leading-edge infrastructures whereas tactical imperatives. Enthusiastically disintermediate adaptive systems.</p>
+                                    <p>c’est la notion même d’expérience qui est questionnée, souvent réduite à la somme des savoir-faire techniques acquis dans l’emploi prescrit. L’ensemble de ces facteurs explicatifs concourt non seulement à une faible valorisation de l’expérience acquise par les seniors mais aussi à la considérer comme une entrave au maintien dans l’emploi..</p>
 
-                                    <h3 class="wow fadeInDown">About Us</h3>
-                                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services. Credibly initiate performance based internal or "organic" sources with <a href="#">performance based</a> infrastructures competently.</p>
+                                    <h3 class="wow fadeInDown">à propos de nous</h3>
+                                    <p>Plusieurs travaux récents concordent pour pointer la faible prise en compte de l’expérience des seniors dans la gestion de l’emploi des entreprises <a href="#">Notre equipe</a> infrastructures competently.</p>
 
-                                    <h3 class="wow fadeInDown">Our Mission</h3>
-                                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services. Credibly initiate performance based internal or "organic" sources with performance based infrastructures. Competently.</p>
+                                    <h3 class="wow fadeInDown">Notre mission</h3>
+                                    <p>Plusieurs travaux récents concordent pour pointer la faible prise en compte de l’expérience des seniors dans la gestion de l’emploi des entreprises. Competently.</p>
 
-                                    <a class="btn btn-primary wow fadeInDown" href="#" role="button">Read More</a>
+                                    <a class="btn btn-primary wow fadeInDown" href="#" role="button">Aperçu plus</a>
                                 </div>
 
                                 <div class="col-lg-6 col-md-4"></div>
@@ -218,8 +214,9 @@
                         </section><!-- /.intro-wrapper -->
 
 
+
                         <section class="service-wrapper">
-                            <h2 class="section-title wow fadeInDown">Our Services</h2>
+                            <h2 class="section-title wow fadeInDown">Nos Services</h2>
                             <div class="row">
                                 <div class="col-md-6 wow fadeInRight">
                                     <div class="media">
@@ -227,8 +224,8 @@
                                             <span class="icon bg1 flaticon-increasing5"></span>
                                         </a>
                                         <div class="media-body">
-                                            <h3 class="media-heading"><a href="#">Global business</a></h3>
-                                            <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+                                            <h3 class="media-heading"><a href="#">Affaires mondiales</a></h3>
+                                            <p>Nous définissons, façonnons et faisons progresser les intérêts et les valeurs dans un environnement mondial complexe..</p>
                                         </div> <!-- /.media-body -->
                                     </div> <!-- /.media -->
                                 </div> <!-- /.col-md-6 -->
@@ -239,8 +236,9 @@
                                             <span class="icon bg2 flaticon-syncing"></span>
                                         </a>
                                         <div class="media-body">
-                                            <h3 class="media-heading"><a href="#">Fast online support</a></h3>
-                                            <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+                                            <h3 class="media-heading"><a href="#">Support en ligne rapide
+                                                </a></h3>
+                                            <p>Pour une assistance sur votre produit, nous vous invitons à utiliser également nos services en ligne et la communauté HuntKingdom. Nous espérons pouvoir compter sur nous.</p>
                                         </div> <!-- /.media-body -->
                                     </div> <!-- /.media -->
                                 </div> <!-- /.col-md-6 -->
@@ -251,24 +249,24 @@
                                             <span class="icon bg3 flaticon-file24"></span>
                                         </a>
                                         <div class="media-body">
-                                            <h3 class="media-heading"><a href="#">Pro Services &amp; Advice</a></h3>
-                                            <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+                                            <h3 class="media-heading"><a href="#">Services Pro & Conseil</a></h3>
+                                            <p>Une société de conseil ou cabinet de consulting est une entreprise qui délivre des avis ou des recommandations sur ce qu'il convient de faire dans une organisation pour en améliorer un aspect.</p>
                                         </div> <!-- /.media-body -->
                                     </div> <!-- /.media -->
                                 </div> <!-- /.col-md-6 -->
 
-                                <div class="col-md-6 wow fadeInRight">
-                                    <div class="media">
-                                        <a class="media-left" href="#">
-                                            <span class="icon bg4 flaticon-royalty"></span>
-                                        </a>
-                                        <div class="media-body">
-                                            <h3 class="media-heading"><a href="#">Fresh business ideas</a></h3>
-                                            <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
-                                        </div> <!-- /.media-body -->
-                                    </div> <!-- /.media -->
-                                </div> <!-- /.col-md-6 -->
-                            </div> <!-- /.row -->
+                            <div class="col-md-6 wow fadeInRight">
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <span class="icon bg4 flaticon-royalty"></span>
+                                    </a>
+                                    <div class="media-body">
+                                        <h3 class="media-heading"><a href="#">De nouvelles idées commerciales</a></h3>
+                                        <p>La franchise, c'est un formidable réservoir d'idées d'entreprises innovantes, qui se ... presque chaque jour des demandes de création de nouvelles enseignes. ... êtes pourvu d'un caractère commercial et que vous avez le sens du contact.</p>
+                                    </div> <!-- /.media-body -->
+                                </div> <!-- /.media -->
+                            </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
                         </section>
 
                         <section class="advantages-wrapper">

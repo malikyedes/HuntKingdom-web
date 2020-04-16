@@ -42,3 +42,14 @@ article_afficheraime:
 article_afficher_Mes_ARTICLE:
     path:     /afficherMes_ARTICLE
     defaults: { _controller: ForumBundle:Publication:afficher_mine }
+adminindexforum :
+    path: /adminforum
+    defaults: { _controller: ForumBundle:Publication:adminIndex }
+
+forum_signal :
+    path: /ajouter_signal/{id}
+    defaults: { _controller: ForumBundle:Publication:signal }
+
+
+
+

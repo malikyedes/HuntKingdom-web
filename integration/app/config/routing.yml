@@ -2,6 +2,14 @@ forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /
 
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+huntkingdom_reclam:
+    resource: "@HuntkingdomBundle/Controller/ReclamController.php"
+    type:     annotation
+
 huntkingdom:
     resource: "@HuntkingdomBundle/Resources/config/routing.yml"
     prefix:   /

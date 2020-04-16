@@ -1,0 +1,32 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>Liste des Evenements</h1>
+
+<table border="2">
+    <tr><th>Lieu</th><th>titre</th><th>nbrplaces</th><th>nbrParticipant</th><th>datedebut</th><th>datefin</th><th>image</th><th>Supprimer</th><th>Modifier</th></tr>
+    {%  for e in Evenement %}
+        <tr>
+            <td>{{ e.lieu }}</td>
+            <td>{{ e.titre }}</td>
+            <td>{{ e.nbreplaces}}</td>
+
+            <td>{{ e.nbreparticipants}}</td>
+            <td>{{ e.datedebut|date}}</td>
+            <td>{{ e.datefin|date}}</td>
+
+            <td><img src="{{ asset('images/' ~ e.image)}}" style="width: 50px;height: 50px"></td>
+            <td>{{ e.description}}</td>
+            <td> <a href="{{path('huntkingdom_SupprimerEvenements',{ 'id':e.id} )}}"></a> </td>
+            <td> <a href="{{path('huntkingdom_ModifierEvenements',{ 'id':e.id} )}}">Modifier</a> </td>
+
+        </tr>
+    {% endfor %}
+</table>
+<div class="navigation">
+    {{ knp_pagination_render(Evenement) }}
+</div>
+</body>
+</html>

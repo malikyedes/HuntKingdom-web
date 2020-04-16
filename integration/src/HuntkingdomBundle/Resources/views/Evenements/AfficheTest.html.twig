@@ -1,0 +1,66 @@
+{% extends 'test.html.twig' %}
+
+                                    {% block titrepage %}
+                                        <h1>Evenements</h1>
+                                    {% endblock %}
+
+
+ {% block content %}
+
+
+
+
+
+
+
+
+     {%  for e in Evenement %}
+         <div class="container">
+
+             <div class="col-xs-12 col-sm-8 col-md-9">
+                 <article class="blog-post-wrapper sticky">
+                     <header class="entry-header">
+                         <div class="entry-meta">
+                             <ul class="list-inline">
+                                 <li><span class="the-time"><a href="#">{{ e.datedebut|date}}</a></span></li>
+                                 <li><span class="the-time"><a href="#">{{ e.datefin|date}}</a></span></li>
+                                 <li><span class="the-author"> By: <a class="url" href="#">Chasseur</a></span></li>
+                                 <li><span class="the-category"> le lieu: <a href="#">{{ e.lieu }}</a></span></li>
+                                 <li><span class="the-category"> Places: <a href="#">{{ e.nbreplaces }}</a></span></li>
+
+                             </ul>
+                         </div><!-- /.entry-meta -->
+
+                         <h2 class="entry-title"><a>{{ e.titre }}</a></h2>
+                     </header><!-- /.entry-header -->
+                     <div class="entry-content">
+                         <p><img src="{{ asset('images/' ~ e.image)}}" style="width: 400px;height: 300px"></p>
+                     </div><!-- /.entry-content -->
+                     <div class="entry-content">
+                         <p>{{ e.description }}</p>
+                     </div><!-- /.entry-content -->
+                     <td> <a class="btn btn-primary"> Participate</a></td>
+                     <td> <a class="btn btn-primary" href="{{path('huntkingdom_ModifierEvenements',{ 'id':e.id} )}}">Modifier</a> </td>
+
+
+                 </article>
+             </div>
+         </div>
+
+
+
+     {% endfor %}
+     <div class="navigation">
+         {{ knp_pagination_render(Evenement) }}
+     </div>
+
+ {% endblock %}
+
+{% block search %}
+    <form role="search" method="get" class="search-form" action="getPost">
+        <label class="sr-only">Search for:</label>
+        <input type="search" class="form-control" placeholder="Search" value="" name="s" title="Search for:">
+        <button type="submit" class="search-submit" value=""><i class="fa fa-search"></i></button>
+    </form>
+{% endblock %}
+

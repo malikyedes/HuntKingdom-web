@@ -1,0 +1,76 @@
+{% extends 'admintemplate.html.twig' %}
+
+
+{% block content %}
+
+    <div class="center-container">
+        <div class="banner-dott">
+            <div class="main">
+                <div class="w3layouts_main_grid">
+                    <h1 class="w3layouts_head">Votre reclamation</h1>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre nom </label>
+    <input type="text" value="{{ m.nom }}">
+        </span>
+                        </div>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre prénom </label>
+    <input type="text" value="{{ m.prenom }}" >
+        </span>
+                        </div>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre E-mail </label>
+    <input type="text" value="{{ m.email }}">
+        </span>
+                        </div>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Sujet </label>
+    <input type="text" value="{{ m.sujet }}">
+        </span>
+                        </div>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Description </label>
+    <input type="text" value="{{ m.description }}">
+        </span>
+                        </div>
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre Image </label>
+                <img src= "{{ asset('images/') }}{{ m.screenshot }}" class="img-responsive " alt="">
+        </span>
+                        </div>
+
+
+                </div>
+
+
+
+                <div class="w3layouts_copy_right">
+                    <div class="container">
+                        <p>© 2020 Service Form. All rights reserved | Design by E-soft</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

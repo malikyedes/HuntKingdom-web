@@ -58,60 +58,13 @@
 
 {% block search %}
 
-    <div class="sidebar-search">
-        <div class="input-group custom-search-form">
-            <input type="text" id="search" class="form-control" placeholder="Search here">
-        </div>
-    </div>
-    <ul class="nav" id="side-menu">
-        <li>
-            <a href="search"> Entities<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level" id="entitiesNav">
-            </ul>
-        </li>
-    </ul>
-    <br><br><br><br>
-    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script >
-        jQuery(document).ready(function() {
-            var searchRequest = null;
-            $("#search").keyup(function() {
-                var minlength = 1;
-                var that = this;
-                var value = $(this).val();
-                var entitySelector = $("#entitiesNav").html('');
-                if (value.length >= minlength ) {
-                    if (searchRequest != null)
-                        searchRequest.abort();
-                    searchRequest = $.ajax({
-                        type: "GET",
-                        url: "{{ path('search') }}",
-                        data: {
-                            'q' : value
-                        },
-                        dataType: "text",
-                        success: function(msg){
-                            //we need to check if the value is the same
-                            if (value===$(that).val()) {
-                                var result = JSON.parse(msg);
-                                $.each(result, function(key, arr) {
-                                    $.each(arr, function(id, value) {
-                                        if (key === 'publication') {
-                                            if (id !== 'error') {
-                                                console.log(value[1]);
-                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="show/'+id+'"></a></li>');
-                                            } else {
-                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
-                                            }
-                                        }
-                                    });
-                                });
-                            }
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+    {{ form_start(f) }}
+<div class="search-form">{{ form_row(f.titre,{'attr':{'class':'form-control'}}) }}
+    <button type="submit" class="search-submit" value=""><i class="fa fa-search"></i>{{ form_row(f.recherche,{'attr':{'class':'btn btn-primary'}}) }}</button>
+
+
+
+    {{ form_end(f) }}
+
 {% endblock %}
 

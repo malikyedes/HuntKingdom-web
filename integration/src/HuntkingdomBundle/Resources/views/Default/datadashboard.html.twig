@@ -1,0 +1,425 @@
+{% extends 'admintemplate.html.twig' %}
+
+{% block header %}
+    <h6 class="m-0 font-weight-bold text-primary">    Liste des Publications</h6>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Reclamations</span>
+                    <span class="info-box-number">
+                  {{ countReclamation }}
+                  <small></small>
+                </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+    </div>
+        <!-- /.col -->
+
+
+        <!-- fix for small devices only -->
+
+        <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Utulisateurs</span>
+                <span class="info-box-number">{{ countUser }}</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- /.row -->
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- jQuery Knob -->
+                <div class="card card-success collapsed-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="far fa-chart-bar"></i>
+                            Counting HuntKingdom Objects
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-plus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                        class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!--                                                            OMG                                                  -->
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+
+
+                            <!-- ./col -->
+
+                            <!-- ./col -->
+
+                            <!-- ./col -->
+                            <!-- ./col -->
+
+                            <!-- ./col -->
+
+                            <div class="col-lg-3 col-6">
+
+
+                                <!-- small box -->
+                                <div class="small-box bg-lime">
+                                    <div class="inner">
+                                        <h3>{{ countPublication }}</h3>
+
+                                        <p>Publications</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-share"></i>
+                                    </div>
+                                    <a href="{{ path('forum_read') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-teal">
+                                    <div class="inner">
+                                        <h3>{{ countReclamation }}</h3>
+
+                                        <p>Reclamations</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-clipboard"></i>
+                                    </div>
+                                    <a href=""  class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <!-- ./col -->
+
+                            <!-- ./col -->
+
+
+
+                            <!-- ./col -->
+
+                            <!-- ./col -->
+
+
+
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+
+    <!--******************************************************** /Partie 2 ********************************* -->
+    <!--                                                            OMG                                                  -->
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Data Chart</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="myChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- DONUT CHART -->
+
+            <!-- /.card -->
+            <!-- DONUT CHART -->
+
+            <!-- /.card -->
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Data Chart</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="myChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- ./col -->
+        </div>
+
+
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+    </div>
+    <!-- /.col -->
+
+    </div>
+
+
+    <!--******************************************************** /Partie 2 ********************************* -->
+
+
+
+    </div>
+
+
+
+    {% set Jan = 0%}
+    {% set Feb = 0%}
+    {% set Mar = 0%}
+    {% set Apr = 0%}
+    {% set May = 0%}
+    {% set Jun = 0%}
+    {% set Jul = 0%}
+    {% set Aug = 0%}
+    {% set Sep = 0%}
+    {% set Oct = 0%}
+    {% set Nov = 0%}
+    {% set Dec = 0%}
+
+    {% for rec in reclamation %}
+
+        {% if rec.date|date("M") == "Jan" %}
+            {% set Jan = Jan + 1 %}
+        {% elseif rec.date|date("M") == "Feb" %}
+            {% set Feb = Feb + 1 %}
+        {% elseif rec.date|date("M") == "Mar" %}
+            {% set Mar = Mar + 1 %}
+        {% elseif rec.date|date("M") == "Apr" %}
+            {% set Apr = Apr + 1 %}
+        {% elseif rec.date|date("M") == "May" %}
+            {% set May = May + 1 %}
+        {% elseif rec.date|date("M") == "Jun" %}
+            {% set Jun = Jun + 1 %}
+        {% elseif rec.date|date("M") == "Jul" %}
+            {% set Jul = Jul + 1 %}
+        {% elseif rec.date|date("M") == "Aug" %}
+            {% set Aug = Aug + 1 %}
+        {% elseif rec.date|date("M") == "Sep" %}
+            {% set Sep = Sep + 1 %}
+        {% elseif rec.date|date("M") == "Aug" %}
+            {% set Aug = Aug + 1 %}
+        {% elseif rec.date|date("M") == "Nov" %}
+            {% set Nov = Nov + 1 %}
+        {% elseif rec.date|date("M") == "Dec" %}
+            {% set Dec = Dec + 1 %}
+        {% endif %}
+
+
+    {% endfor %}
+
+    <!--                        Reclamation Per Month                      -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Reclamation par mois',
+                    backgroundColor: 'rgb(105,105,105)',
+                    borderColor: 'rgb(105,105,105)',
+                    data: [{{Jan}}, {{Feb}}, {{Mar}}, {{Apr}}, {{May}}, {{Jun}}, {{Jul}},{{Aug}} , {{Sep}},{{Oct}} ,{{Nov}},{{Dec}}  ]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+
+    </script>
+
+
+
+    {% set Jan = 0%}
+    {% set Feb = 0%}
+    {% set Mar = 0%}
+    {% set Apr = 0%}
+    {% set May = 0%}
+    {% set Jun = 0%}
+    {% set Jul = 0%}
+    {% set Aug = 0%}
+    {% set Sep = 0%}
+    {% set Oct = 0%}
+    {% set Nov = 0%}
+    {% set Dec = 0%}
+
+    {% for rec in publication %}
+
+        {% if rec.postedIn|date("M") == "Jan" %}
+            {% set Jan = Jan + 1 %}
+        {% elseif rec.postedIn|date("M") == "Feb" %}
+            {% set Feb = Feb + 1 %}
+        {% elseif rec.postedIn|date("M") == "Mar" %}
+            {% set Mar = Mar + 1 %}
+        {% elseif rec.postedIn|date("M") == "Apr" %}
+            {% set Apr = Apr + 1 %}
+        {% elseif rec.postedIn|date("M") == "May" %}
+            {% set May = May + 1 %}
+        {% elseif rec.postedIn|date("M") == "Jun" %}
+            {% set Jun = Jun + 1 %}
+        {% elseif rec.postedIn|date("M") == "Jul" %}
+            {% set Jul = Jul + 1 %}
+        {% elseif rec.postedIn|date("M") == "Aug" %}
+            {% set Aug = Aug + 1 %}
+        {% elseif rec.postedIn|date("M") == "Sep" %}
+            {% set Sep = Sep + 1 %}
+        {% elseif rec.postedIn|date("M") == "Aug" %}
+            {% set Aug = Aug + 1 %}
+        {% elseif rec.postedIn|date("M") == "Nov" %}
+            {% set Nov = Nov + 1 %}
+        {% elseif rec.postedIn|date("M") == "Dec" %}
+            {% set Dec = Dec + 1 %}
+        {% endif %}
+
+
+    {% endfor %}
+
+    <!--                        Reclamation Per Month                      -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'publication par mois',
+                    backgroundColor: 'rgb(105,105,105)',
+                    borderColor: 'rgb(105,105,105)',
+                    data: [{{Jan}}, {{Feb}}, {{Mar}}, {{Apr}}, {{May}}, {{Jun}}, {{Jul}},{{Aug}} , {{Sep}},{{Oct}} ,{{Nov}},{{Dec}}  ]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    {% set six = 0%}
+    {% set seven = 0%}
+    {% set eight = 0%}
+    {% set nine = 0%}
+    {% set ten = 0%}
+
+
+
+
+    <!--        new-->
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--        new-->
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

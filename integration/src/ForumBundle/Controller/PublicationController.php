@@ -4,8 +4,10 @@ use ForumBundle\Entity\Commentaire;
 use ForumBundle\Entity\LikeF;
 use ForumBundle\Entity\LikeForum;
 use ForumBundle\Entity\Publication;
+use ForumBundle\Entity\SignalForum;
 use ForumBundle\Entity\Vus;
 use ForumBundle\Form\PublicationType;
+use ForumBundle\Form\SignalForumType;
 use ForumBundle\ForumBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -17,16 +19,53 @@ use Symfony\Component\Routing\Annotation\Route;
 class PublicationController extends Controller {
     public function readAction(Request $request)
     {
+        $m=new Publication();
+        $Form=$this->createForm(\ForumBundle\Form\RechercheType::class,$m);
+        $Form->handleRequest($request);
+
+        if($Form->isSubmitted())
+        {
+            $titre=$request->get('titre');
+            if($titre==" ")
+            {
+                $m=$this->getDoctrine()->getRepository(Publication::class)
+                    ->findAll();
+            }
+            else {
+                $m = $this->getDoctrine()->getRepository(Publication::class)
+                    ->findBy(array('titre' => $m->getTitre()));;
+            }
+            /**
+             * @var $pagination \Knp\Component\Pager\Paginator
+             */
+            $paginator=$this->get('knp_paginator');
+            $result=$paginator->paginate($m,
+                $request->query->getInt('page',1),
+                $request->query->getInt('limit',3));
+        }
+        else {
+            $m=$this->getDoctrine()->getRepository(Publication::class)
+                ->findAll();
+            /**
+             * @var $pagination \Knp\Component\Pager\Paginator
+             */
+            $paginator=$this->get('knp_paginator');
+            $result=$paginator->paginate($m,
+                $request->query->getInt('page',1),
+                $request->query->getInt('limit',3));
+        }
+        return $this->render("@Forum/publication/readtest.html.twig",array('f'=>$Form->createView(),'m'=>$result));
+    }
+
+    public function adminIndexAction()
+    {
         $em = $this->getDoctrine()->getManager();
-        $Publication = $em->getRepository("ForumBundle:Publication")->findAll();
-        /**
-         * @var $pagination \Knp\Component\Pager\Paginator
-         */
-        $paginator = $this->get('knp_paginator');
-        $result = $paginator->paginate($Publication,
-            $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 2));
-        return $this->render('@Forum/publication/readtest.html.twig', array('m' => $result));
+
+        $publications = $em->getRepository('ForumBundle:Publication')->findAll();
+
+        return $this->render('@Forum/publication/adminIndex.html.twig', array(
+            'publications' => $publications,
+        ));
     }
 
     public function searchAction(Request $request)
@@ -72,11 +111,29 @@ class PublicationController extends Controller {
         if ($Viewsd[1]==0)
         { $this->add_viewAction($id);}
 
-
         return $this->render('@Forum/publication/show.html.twig',array('m'=>$Pub,'msg'=>$commentairep,'views'=>$Views,'userid'=>$userid,'likes_user' => $likes_user));
 
 
+    }
 
+    public function signalAction($id,Request $request){
+
+        $signal=new SignalForum();
+        $signal->setIdPb($id);
+
+        $Form=$this->createForm(SignalForumType::class,$signal);
+        $Form->handleRequest($request);
+        if($Form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+
+
+            $em->persist($signal);
+            $em->flush();
+
+            return $this->redirectToRoute('forum_read');
+
+        }
 
     }
 
@@ -293,23 +350,48 @@ class PublicationController extends Controller {
             $userid = $user->getId();
         }
         $m=new Publication();
+        $Form=$this->createForm(\ForumBundle\Form\RechercheType::class,$m);
+        $Form->handleRequest($request);
+
+        if($Form->isSubmitted())
+        {
+            $titre=$request->get('titre');
+            if($titre==" ")
+            {
+                $em=$this->getDoctrine()->getManager();
+                $Articles=$em->getRepository("ForumBundle:Publication")->findBy(array('idUsers' => $userid));
+            }
+
+            else {
+                $m = $this->getDoctrine()->getRepository(Publication::class)
+                    ->findBy(array('titre' => $m->getTitre()));;
+            }
+            /**
+             * @var $pagination \Knp\Component\Pager\Paginator
+             */
+            $paginator=$this->get('knp_paginator');
+            $result=$paginator->paginate($m,
+                $request->query->getInt('page',1),
+                $request->query->getInt('limit',3));
+        }
 
 
-        //$ArticlesU=new Article();
-        $em=$this->getDoctrine()->getManager();
-        $Articles=$em->getRepository("ForumBundle:Publication")->findBy(array('idUsers' => $userid));
-        /**
-         * @var $pagination \Knp\Component\Pager\Paginator
-         */
-        $paginator=$this->get('knp_paginator');
-        $result=$paginator->paginate($Articles,
-            $request->query->getInt('page',1),
-            $request->query->getInt('limit',2));
+        else {
+            $m=$this->getDoctrine()->getRepository(Publication::class)
+                ->findBy(array('idUsers' => $userid));
+            /**
+             * @var $pagination \Knp\Component\Pager\Paginator
+             */
+            $paginator=$this->get('knp_paginator');
+            $result=$paginator->paginate($m,
+                $request->query->getInt('page',1),
+                $request->query->getInt('limit',3));
+        }
+        return $this->render("@Forum/publication/readtest.html.twig",array('f'=>$Form->createView(),'m'=>$result));
 
-        return $this->render('@Forum/publication/readtest.html.twig',array('m'=>$result));
+
+
     }
-
-
 
 
 

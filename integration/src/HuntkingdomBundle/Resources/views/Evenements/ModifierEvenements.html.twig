@@ -1,0 +1,27 @@
+
+{% extends 'test.html.twig' %}
+
+                                    {% block titrepage %}
+                                        <h1>Modifier Evenement</h1>
+                                    {% endblock %}
+ {% block content %}
+
+     {{ form_start(form) }}
+
+     <div class="form-group">{{ form_row(form.titre,{'attr':{'class':'form-control'}}) }}
+
+     </div>
+     <div class="form-group">{{ form_row(form.titre,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.nbreplaces,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.nbreparticipants,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.datedebut,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.datefin,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.description,{'attr':{'class':'form-control'}}) }}</div>
+     <div class="form-group">{{ form_row(form.file) }}</div>
+     <div class="form-group">{{ form_row(form.ajouter,{'attr':{'class':'btn btn-primary'}}) }}</div>
+
+     {{ form_end(form) }}
+
+
+
+ {% endblock %}

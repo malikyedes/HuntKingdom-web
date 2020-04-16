@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HuntKingdom</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electrical Service Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+
+    <!-- //custom-theme -->
+    <link href="{{ asset('css/style1.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- js -->
+    <script type="text/javascript" src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
+    <!-- //js -->
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!-- google fonts -->
+
+</head>
+
+<body>
+<!-- banner -->
+<div class="center-container">
+    <div class="banner-dott">
+        <div class="main">
+            <div class="w3layouts_main_grid">
+                <h1 class="w3layouts_head">Votre reclamation</h1>
+                <form action="#" method="post" class="w3_form_post">
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre nom </label>
+    <input type="text" value="{{ reclam.nom }}">
+        </span>
+                    </div>
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre prénom </label>
+    <input type="text" value="{{ reclam.prenom }}" >
+        </span>
+                    </div>
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre E-mail </label>
+    <input type="text" value="{{ reclam.email }}">
+        </span>
+                    </div>
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Sujet </label>
+    <input type="text" value="{{ reclam.sujet }}">
+        </span>
+                    </div>
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Description </label>
+    <input type="text" value="{{ reclam.description }}">
+        </span>
+                    </div>
+                    <div class="w3_agileits_main_grid w3l_main_grid">
+        <span class="agileits_grid">
+        <label>Votre Image </label>
+    <img src= "{{ asset('images/') }}{{ reclam.screenshot }}" class="img-responsive " alt="">
+        </span>
+                    </div>
+
+                    <li>
+                        <a href="{{ path('reclam_new') }}"> <button type="button" class="btn btn-success">Autre reclamation ?</button></a>
+
+                    </li>
+
+                </form>
+            </div>
+
+            <!-- Calendar -->
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}" />
+            <script src="{{ asset('js/jquery-ui.js') }}"></script>
+            <script>
+                $(function() {
+                    $( "#datepicker" ).datepicker();
+                });
+            </script>
+            <!-- //Calendar -->
+
+            <div class="w3layouts_copy_right">
+                <div class="container">
+                    <p>© 2020 Service Form. All rights reserved | Design by E-soft</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //footer -->
+
+</body>
+</html>

@@ -1,10 +1,30 @@
 huntkingdom_indexpage:
     path:     /index
-    defaults: { _controller: HuntkingdomBundle:Hunt:home }
+    defaults: { _controller: HuntkingdomBundle:Hunt:index }
 huntkingdom_loginpage:
     path:     /in
     defaults: { _controller: HuntkingdomBundle:Hunt:login }
 huntkingdom_signuppage:
     path:     /up
     defaults: { _controller: HuntkingdomBundle:Hunt:signup }
-
+admin_index:
+    path:     /adminindex
+    defaults : { _controller: HuntkingdomBundle:Default:datadashboard }
+reclamadmin_show:
+    path:     /showadmin/{id}
+    defaults: { _controller: HuntkingdomBundle:Reclam:showadminAction }
+huntkingdom_AjoutEvenements:
+    path:     /AjoutEvenements
+    defaults: { _controller: HuntkingdomBundle:Evenements:AjoutEvenements }
+huntkingdom_AfficheEvenements:
+    path:     /AfficheEvenements
+    defaults: { _controller: HuntkingdomBundle:Evenements:AfficheEvenements }
+huntkingdom_SupprimerEvenements:
+    path:     /SupprimerEvenements/{id}
+    defaults: { _controller: HuntkingdomBundle:Evenements:SupprimerEvenements }
+huntkingdom_ModifierEvenements:
+    path:     /ModifierEvenements/{id}
+    defaults: { _controller: HuntkingdomBundle:Evenements:ModifierEvenements }
+huntkingdom_show:
+    path:     /show/{id}
+    defaults: { _controller: HuntkingdomBundle:Evenements:show }

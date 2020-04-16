@@ -1,0 +1,16 @@
+{% extends 'test.html.twig' %}
+{% block titrepage %}
+    <h1>Ajout Reclamation</h1>
+{% endblock %}
+ {% block content %}
+
+
+{{ form_start(form) }}
+
+                                {{ form_widget(form) }}
+<input type="submit" value="Reclamer" class="btn btn-primary btn-lg" />
+
+{{ form_end(form) }}
+
+
+ {% endblock %}

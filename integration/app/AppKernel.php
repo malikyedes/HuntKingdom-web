@@ -19,12 +19,13 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new HuntkingdomBundle\HuntkingdomBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new BackendBundle\BackendBundle(),
             new ForumBundle\ForumBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-
         ];
 
-        if (in_array($this->getEnvironment(), ['dev', 'test.html.twig'], true)) {
+        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
@@ -63,5 +64,4 @@ class AppKernel extends Kernel
         });
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
-
 }

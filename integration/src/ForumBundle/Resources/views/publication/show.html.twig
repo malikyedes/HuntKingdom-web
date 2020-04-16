@@ -40,7 +40,7 @@
                             &nbsp;                            &nbsp;
 
 
-                            <a class="fas fa-edit" style="font-size:30px;" href="{{path('publication_update',{ 'id':m.idPb} )}}">update </a>
+                            <a class="fas fa-edit" style="font-size:30px;" href="{{path('publication_update',{ 'id':m.idPb} )}}"> </a>
                         </div>
                     {% endif %}
                 </div>
@@ -136,7 +136,7 @@
                                 console.log(data)
                                 //$('div#ajax-results').html(data.output);
                                 // document.getElementById("animation").className = "animated fadeIn";
-                                document.getElementById("yourElement").className = "far fa-thumbs-up";
+                                document.getElementById("yourElement").className = "far fa-thumbs-down";
                                 document.getElementById("yourElement2").className = "hidden-xl-down";
                                 document.getElementById('raedclap').innerHTML = data.output;
                                 document.getElementById("one").className = "hidden-xl-down";
@@ -173,7 +173,6 @@
                         <div class="media">
                             <a  class="ajaxf">
 
-                                <i onclick="myFunction2(this)" class="fas fa-thumbs-down"  id="one" style="font-size:30px;color:#8A2BE2;"></i>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 

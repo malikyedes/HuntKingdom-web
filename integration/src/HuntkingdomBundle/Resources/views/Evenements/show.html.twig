@@ -1,0 +1,99 @@
+{% extends 'test.html.twig' %}
+
+   {% block titrepage %}
+       <h1 xmlns="http://www.w3.org/1999/html">Evenements</h1>
+   {% endblock %}
+
+
+ {% block content %}
+
+
+
+     <div class="container">
+
+         <div class="col-xs-12 col-sm-8 col-md-9">
+             <article class="blog-post-wrapper sticky">
+                 <header class="entry-header">
+                     <div class="entry-meta">
+                         <ul class="list-inline">
+                             <li><span class="the-time"><a href="#">{{ Evenement.datedebut|date}}</a></span></li>
+                             <li><span class="the-time"><a href="#">{{ Evenement.datefin|date}}</a></span></li>
+                             <li><span class="the-author"> By: <a class="url" href="#">Chasseur</a></span></li>
+                             <li><span class="the-category"> Lieu: <a href="#">{{ Evenement.lieu }}</a></span></li>
+                             <li><span class="the-category"> nombre des palces: <a href="#">{{ Evenement.nbreplaces }}</a></span></li>
+                         </ul>
+                     </div><!-- /.entry-meta -->
+
+                     <h2 class="entry-title"><a>{{ Evenement.titre }}</a></h2>
+                 </header><!-- /.entry-header -->
+                 <div class="entry-content">
+                     <p>{{ Evenement.nbreplaces }}</p>
+                 </div><!-- /.entry-content -->
+                 <div class="post-thumbnail">
+                     <img src="{{ asset('images/' ~ Evenement.image)}}" class="img-responsive " alt="">
+                     <td> <a href="{{path('huntkingdom_SupprimerEvenements',{ 'id':e.id} )}}">Supprimer</a> </td>
+                     <td> <a href="{{path('huntkingdom_ModifierEvenements',{ 'id':e.id} )}}">Modifier</a> </td>
+                     <script>
+
+
+
+
+
+
+
+
+
+
+
+                     </script>
+
+
+                 </div><!-- /.post-thumbnail -->
+
+
+             </article>
+
+             <div class="about-author clearfix">
+                 <div class="media">
+                     <div class="row">
+                         <p><a class="btn btn-danger"  href="{{path('huntkingdom_SupprimerEvenements',{ 'id':Evenement.id} )}}">Supprimer</a></p>
+                         <p><a class="btn btn-primary" href="{{path('huntkingdom_ModifierEvenements',{ 'id':Evenement.id} )}}">update </a></p>
+                     </div>
+
+
+                 </div>
+             </div>
+
+             <section class="comments-wrapper">
+
+                 <h2>Comments</h2>
+                 <hr>
+                 {% for j in msg %}
+
+                     <ul class="media-list">
+
+                         <li class="media">
+
+                             <div class="media-body">
+                                 <span class="comment-author"><i class="fa fa-user"></i>Jayden Willis</span>
+                                 <span class="comment-date"><i class="fa fa-calendar"></i>{{ j.addedIn|date}}</span>
+                                 <div class="comment-body">{{ j.nbreplaces }}</div>
+                                 <span class="comments-buttons"><a href="#">Reply</a></span>
+                             </div><!-- /.media-body -->
+                         </li>
+                     </ul>
+                 {% endfor %}
+
+
+                 <hr>
+
+
+             </section>
+
+         </div>
+     </div>
+     <div class="navigation">
+         {{ knp_pagination_render(Evenement) }}
+     </div>
+
+ {% endblock %}

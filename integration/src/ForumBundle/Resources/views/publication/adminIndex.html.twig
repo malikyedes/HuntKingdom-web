@@ -1,0 +1,44 @@
+{% extends 'admintemplate.html.twig' %}
+
+{% block header %}
+    <h6 class="m-0 font-weight-bold text-primary">    Liste des Publications</h6>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+    <table class="table table-bordered table-striped" id="dataTable">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Theme</th>
+            <th scope="col">Titre</th>
+
+            <th scope="col">Contenu</th>
+            <th scope="col">ID Auteur</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for publication in publications %}
+            <tr> <td>{{ publication.idPb }}</td>
+                <td>{{ publication.theme }}</td>
+                <td>{{ publication.titre }}</td>
+
+                <td>{{ publication.contenu }}</td>
+                <td>{{ publication.idUsers }}</td>
+
+
+                <td><a class="fas fa-trash " style="font-size:30px; color:#FF0000;" href="{{ path('publication_delete', { 'id': publication.idPb,'check':'back' }) }}"></a>
+                    <a class="fas fa-eye" style="font-size:30px;" href="{{ path('publication_show', { 'id': publication.idPb }) }}"></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -150,9 +150,8 @@
                                         <div class="submenu-wrapper submenu-wrapper-topbottom">
                                             <div class="submenu-inner  submenu-inner-topbottom">
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="portfolio-four.html">Portfolio Four Col</a></li>
-                                                    <li><a href="portfolio-three.html">Portfolio Three Col</a></li>
-                                                    <li><a href="portfolio-two.html">Portfolio Two Col</a></li>
+                                                    <li><a href="{{ path('huntkingdom_AfficheEvenements') }}">Afficher Evenements</a></li>
+                                                    <li><a href="{{ path('huntkingdom_AjoutEvenements') }}">Ajout Evenements</a></li>
                                                 </ul>
                                             </div><!-- /.submenu-inner -->
                                         </div> <!-- /.submenu-wrapper -->
@@ -171,11 +170,11 @@
                                         </div> <!-- /.submenu-wrapper -->
                                     </li>
 
-                                    <li><a href="contact.html">Réclamations</a></li>
+                                    <li><a href="{{ path('reclam_new') }}">Réclamations</a></li>
                                     <li><a href="{{ path('fos_user_security_login') }}">Sign in</a></li>
 
                                     <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
-                                    <li><a class="fas fa-power-off" style="color:#FF0000;" href="{{ path('fos_user_security_logout') }}"> </a></li>
+                                    <li><a class="fas fa-power-off" style="color:#FF0000;   " href="{{ path('fos_user_security_logout') }}"> </a></li>
 
 
                                 </ul>
